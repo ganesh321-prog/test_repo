@@ -10,13 +10,6 @@ pipeline{
                git credentialsId: 'git_jenkins', url: 'https://github.com/ganesh321-prog/test_repo.git'
             }
         }
-        stage("Maven Build"){
-            steps{
-                sh "pwd"
-                sh "mvn clean package"
-                sh "mv target/*.jar target/myweb.war"
-            }
-        }
         stage("deploy-dev"){
             steps{
                 sshagent(['tomcat-new']) {
