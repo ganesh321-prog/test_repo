@@ -13,7 +13,6 @@ pipeline{
         stage("Maven Build"){
             steps{
                 sh "pwd"
-                sh "cd /home/ec2-user"
                 sh "mvn clean package"
                 sh "mv target/*.jar target/myweb.war"
             }
