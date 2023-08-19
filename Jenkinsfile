@@ -15,7 +15,8 @@ pipeline{
             steps{
                 sshagent(['tomcat-new']) {
                 sh """
-                    pwd
+                    cd /var/lib/jenkins/workspace/test-pipeline-deploy
+                    
                     scp -o StrictHostKeyChecking=no target/myweb.war  ec2-user@3.110.85.169:/root/apache-tomcat-9.0.79/webapps/
                 
                     ssh ec2-user@3.110.85.169 /root/apache-tomcat-9.0.79/bin/shutdown.sh
